@@ -1,0 +1,43 @@
+{
+    "name": "rich-id/maintenance-bundle",
+    "description": "A maintenance bundle for Symfony 4.4",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "RichId",
+            "homepage": "https://www.rich-id.fr"
+        }
+    ],
+    "support": {
+        "email": "team-devs@rich-id.io",
+        "source": "https://github.com/rich-id/maintenance-bundle",
+        "docs": "https://github.com/rich-id/maintenance-bundle/blob/master/README.md",
+        "issues": "https://github.com/rich-id/maintenance-bundle/issues"
+    },
+    "require": {
+        "php": ">=7.3",
+        "lexik/maintenance-bundle": "^2.1",
+        "symfony/twig-bundle": "^4.4",
+        "symfony/translation": "^4.0"
+    },
+    "require-dev": {
+        "richcongress/test-suite": "^0.1",
+        "infection/infection": "^0.16.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "RichId\\MaintenanceBundle\\": ""
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "RichId\\MaintenanceBundle\\Tests\\": "Tests/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin",
+        "discard-changes": true,
+        "sort-packages": true
+    }
+}
