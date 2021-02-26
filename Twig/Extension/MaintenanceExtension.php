@@ -20,11 +20,11 @@ class MaintenanceExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('isLocked', [$this, 'isLocked']),
+            new TwigFunction('isWebsiteInMaintenance', [$this, 'isWebsiteInMaintenance']),
         ];
     }
 
-    public function isLocked(): bool
+    public function isWebsiteInMaintenance(): bool
     {
         return $this->driverFactory->getDriver()->decide();
     }
