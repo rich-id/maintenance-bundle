@@ -1,0 +1,4 @@
+rich_id_maintenance_administration_maintenance:
+    path:  /administration/maintenance
+    controller: RichId\MaintenanceBundle\Controller\AdministrationController::maintenance
+    methods:  [ GET, POST ]
