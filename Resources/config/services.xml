@@ -11,5 +11,9 @@
 
         <service id="RichId\MaintenanceBundle\Controller\AdministrationController" />
         <service id="twig.extension.maintenance" class="RichId\MaintenanceBundle\Twig\Extension\MaintenanceExtension" />
+
+        <service id="RichId\MaintenanceBundle\Utility\MaintenanceUtility">
+            <argument type="service" id="lexik_maintenance.driver.factory" />
+        </service>
     </services>
 </container>

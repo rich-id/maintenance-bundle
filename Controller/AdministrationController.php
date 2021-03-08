@@ -3,6 +3,7 @@
 namespace RichId\MaintenanceBundle\Controller;
 
 use RichId\MaintenanceBundle\Model\MaintenanceModel;
+use RichId\MaintenanceBundle\Utility\MaintenanceUtility;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -14,27 +15,16 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AdministrationController extends AbstractController
 {
-    /**
-     * @return Response
-     */
-    public function maintenance(Request $request, ParameterBagInterface $parameterBag): Response
+    public function maintenance(Request $request, ParameterBagInterface $parameterBag, MaintenanceUtility $maintenanceUtility): Response
     {
-        $isAuthorizedPeople = IpUtils::checkIp($request->getClientIp(), $parameterBag->get('lexik_maintenance.authorized.ips'));
+        $maintenceModel = $maintenanceUtility->buildMaintenanceModel();
+        $authorizedIps = $parameterBag->get('lexik_maintenance.authorized.ips');
+        $isAuthorizedPeople = IpUtils::checkIp($request->getClientIp(), $authorizedIps);
 
-        $form = $this->buildForm()->handleRequest($request);
+        $form = $this->buildForm($maintenceModel)->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->updateMaintenanceStatus($form->getData());
-
-            // todo gérer erreur + gérer form beau + droits
-
-            return $this->render(
-                '@RichIdMaintenance/administration/maintenance.html.twig',
-                [
-                    'form'               => $form->createView(),
-                    'isAuthorizedPeople' => $isAuthorizedPeople,
-                ]
-            );
+            $maintenanceUtility->updateMaintenanceStatus($form->getData());
         }
 
         return $this->render(
@@ -46,36 +36,26 @@ class AdministrationController extends AbstractController
         );
     }
 
-    private function buildForm(): FormInterface
+    private function buildForm(MaintenanceModel $model): FormInterface
     {
-        return $this->createFormBuilder($this->buildMaintenanceModel())
-            ->add('isLocked', CheckboxType::class, ['required' => false])
-            ->add('save', SubmitType::class)
+        return $this->createFormBuilder($model)
+            ->add(
+                'isLocked',
+                CheckboxType::class,
+                [
+                    'required'           => false,
+                    'label'              => 'rich_id_maintenant.administration.is_locked',
+                    'translation_domain' => 'maintenance',
+                ]
+            )
+            ->add(
+                'save',
+                SubmitType::class,
+                [
+                    'label'              => 'rich_id_maintenant.administration.save',
+                    'translation_domain' => 'maintenance',
+                ]
+            )
             ->getForm();
-    }
-
-    private function buildMaintenanceModel(): MaintenanceModel
-    {
-        $driverFactory = $this->get('lexik_maintenance.driver.factory');
-        $model = new MaintenanceModel();
-
-        $model->isLocked = $driverFactory->getDriver()->decide();
-
-        return $model;
-    }
-
-    private function updateMaintenanceStatus(MaintenanceModel $model): void
-    {
-        $driver = $this->get('lexik_maintenance.driver.factory')->getDriver();
-
-        if ($model->isLocked) {
-            $driver->lock();
-        } else {
-            $driver->unlock();
-        }
-
-        if ($driver->decide() === !$model->isLocked) {
-            throw new \Exception();
-        }
     }
 }
