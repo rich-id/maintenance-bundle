@@ -32,6 +32,7 @@ class AdministrationController extends AbstractController
             [
                 'form'               => $form->createView(),
                 'isAuthorizedPeople' => $isAuthorizedPeople,
+                'isInMaintenance'    => $maintenceModel->isLocked()
             ]
         );
     }

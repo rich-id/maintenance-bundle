@@ -1,5 +1,6 @@
 rich_id_maintenant.administration.alert: Attention, vous ne faites pas partie de la liste des adresses ip autorisée. Si vous décider de fermer le site, vous n'aurais plus accées a celui-ci.
 rich_id_maintenant.administration.is_locked: Site en maintenance ?
+rich_id_maintenant.administration.save: Enregistrer
 
 rich_id_maintenant.website_lock: Site en maintenance
 rich_id_maintenant.website_lock_description: Vous faite partie des adresses ip autorisées
