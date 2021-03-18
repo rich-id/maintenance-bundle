@@ -13,6 +13,11 @@
             <div class="rich-id-maintenance-warning">{{ 'rich_id_maintenant.administration.alert'|trans({}, 'maintenance') }}</div>
         {% endif %}
 
+        <div class="rich-id-maintenance-toggle">
+            {{ form_widget(form.isLocked) }}
+            {{ form_label(form.isLocked) }}
+        </div>
+
         {{ form(form) }}
     </body>
 </html>

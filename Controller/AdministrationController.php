@@ -25,6 +25,7 @@ class AdministrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $maintenanceUtility->updateMaintenanceStatus($form->getData());
+            return $this->redirectToRoute($request->attributes->get('_route'));
         }
 
         return $this->render(
@@ -32,7 +33,7 @@ class AdministrationController extends AbstractController
             [
                 'form'               => $form->createView(),
                 'isAuthorizedPeople' => $isAuthorizedPeople,
-                'isInMaintenance'    => $maintenceModel->isLocked()
+                'isInMaintenance'    => $maintenceModel->isLocked(),
             ]
         );
     }
