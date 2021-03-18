@@ -16,7 +16,7 @@
     --rich-id-maintenance-alert-position-top: initial;
     --rich-id-maintenance-alert-position-bottom: 40px;
 
-    --rich-id-maintenance-alert-width: 130px;
+    --rich-id-maintenance-alert-width: 150px;
     --rich-id-maintenance-alert-z-index: 1000000;
 
     --rich-id-maintenance-alert-font-family: Helvetica, Arial, sans-serif;
@@ -123,7 +123,7 @@
     color: var(--rich-id-maintenance-alert-title-color);
     font-family: var(--rich-id-maintenance-alert-font-family);
     font-weight: 600;
-    padding: 5px;
+    padding: 5px 15px;
     text-align: center;
     word-break: break-word;
 }
@@ -131,9 +131,19 @@
 .rich-id-maintenance-flag-content {
     color: var(--rich-id-maintenance-alert-content-color);
     font-family: var(--rich-id-maintenance-alert-font-family);
-    padding: 5px;
+    padding: 5px 15px;
     text-align: center;
     word-break: break-word;
+}
+
+.rich-id-maintenance-flag-link {
+    padding: 5px 15px;
+    text-align: center;
+}
+
+.rich-id-maintenance-flag-link a,
+.rich-id-maintenance-flag-link a:hover {
+    color: var(--rich-id-maintenance-alert-title-color) !important;
 }
 
 @media print {

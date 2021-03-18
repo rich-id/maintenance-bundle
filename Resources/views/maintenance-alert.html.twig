@@ -1,4 +1,8 @@
 {% if isWebsiteInMaintenance() %}
+    <style>
+        {% include 'RichIdMaintenanceBundle::style.css.twig' %}
+    </style>
+
     <div class="rich-id-maintenance-flag">
         <div class="rich-id-maintenance-flag-title">{{ 'rich_id_maintenant.website_lock'|trans({}, 'maintenance') }}</div>
         <div class="rich-id-maintenance-flag-content">{{ 'rich_id_maintenant.website_lock_description'|trans({}, 'maintenance') }}</div>
