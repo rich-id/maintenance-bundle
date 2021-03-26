@@ -2,6 +2,13 @@
 
 namespace RichId\MaintenanceBundle\Model;
 
+/**
+ * Class MaintenanceModel.
+ *
+ * @package   RichId\MaintenanceBundle\Model
+ * @author    Hugo Dumazeau <hugo.dumazeau@rich-id.fr>
+ * @copyright 2014 - 2021 RichId (https://www.rich-id.fr)
+ */
 class MaintenanceModel
 {
     /** @var bool */

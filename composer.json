@@ -20,12 +20,29 @@
         "lexik/maintenance-bundle": "^2.1",
         "symfony/form": "^4.0",
         "symfony/framework-bundle": "^4.0",
+        "symfony/security-bundle": "4.4",
         "symfony/translation": "^4.0",
         "symfony/twig-bundle": "^4.4"
     },
     "require-dev": {
         "richcongress/test-suite": "^0.1",
         "infection/infection": "^0.16.4"
+    },
+    "conflict": {
+        "symfony/browser-kit": ">=5.0",
+        "symfony/cache": ">=5.0",
+        "symfony/config": ">=5.0",
+        "symfony/filesystem": ">=5.0",
+        "symfony/finder": ">=5.0",
+        "symfony/http-foundation": ">=5.0",
+        "symfony/intl": ">=5.0",
+        "symfony/options-resolver": ">=5.0",
+        "symfony/process": ">=5.0",
+        "symfony/property-access": ">=5.0",
+        "symfony/property-info": ">=5.0",
+        "symfony/routing": ">=5.0",
+        "symfony/string": ">=5.0",
+        "symfony/yaml": ">=5.0"
     },
     "autoload": {
         "psr-4": {

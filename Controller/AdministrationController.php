@@ -13,6 +13,13 @@ use Symfony\Component\HttpFoundation\IpUtils;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Class AdministrationController.
+ *
+ * @package   RichId\MaintenanceBundle\Controller
+ * @author    Hugo Dumazeau <hugo.dumazeau@rich-id.fr>
+ * @copyright 2014 - 2021 RichId (https://www.rich-id.fr)
+ */
 class AdministrationController extends AbstractController
 {
     public function maintenance(Request $request, ParameterBagInterface $parameterBag, MaintenanceUtility $maintenanceUtility): Response

@@ -8,6 +8,7 @@
         <defaults autowire="true" autoconfigure="true" public="false" />
 
         <service id="Lexik\Bundle\MaintenanceBundle\Drivers\DriverFactory" alias="lexik_maintenance.driver.factory"/>
+        <service id="Symfony\Component\Security\Http\AccessMapInterface" alias="security.access_map"/>
 
         <service id="RichId\MaintenanceBundle\Controller\AdministrationController" />
         <service id="twig.extension.maintenance" class="RichId\MaintenanceBundle\Twig\Extension\MaintenanceExtension" />
