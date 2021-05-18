@@ -4,9 +4,4 @@ services:
         autoconfigure: true
         public: true
 
-    Symfony\Component\Security\Http\AccessMap: ~
-    Symfony\Component\Security\Http\AccessMapInterface:
-        alias: Symfony\Component\Security\Http\AccessMap
-
     RichId\MaintenanceBundle\Twig\Extension\MaintenanceExtension: ~
-    Symfony\Component\Security\Core\Security: ~

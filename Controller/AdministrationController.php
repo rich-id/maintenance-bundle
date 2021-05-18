@@ -2,8 +2,9 @@
 
 namespace RichId\MaintenanceBundle\Controller;
 
+use RichId\MaintenanceBundle\Action\MaintenanceUpdate;
+use RichId\MaintenanceBundle\Fetcher\MaintenanceModelFetcher;
 use RichId\MaintenanceBundle\Model\MaintenanceModel;
-use RichId\MaintenanceBundle\Utility\MaintenanceUtility;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -12,6 +13,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\IpUtils;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Class AdministrationController.
@@ -22,16 +24,25 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class AdministrationController extends AbstractController
 {
-    public function maintenance(Request $request, ParameterBagInterface $parameterBag, MaintenanceUtility $maintenanceUtility): Response
+    public function maintenance(
+        Request $request,
+        ParameterBagInterface $parameterBag,
+        MaintenanceUpdate $maintenanceUpdate,
+        MaintenanceModelFetcher $maintenanceModelFetcher
+    ): Response
     {
-        $maintenceModel = $maintenanceUtility->buildMaintenanceModel();
+        if (!$this->isGranted('ROLE_RICH_ID_MAINTENANCE_ADMIN')) {
+            throw new AccessDeniedException();
+        }
+
+        $maintenceModel = $maintenanceModelFetcher();
         $authorizedIps = $parameterBag->get('lexik_maintenance.authorized.ips');
         $isAuthorizedPeople = IpUtils::checkIp($request->getClientIp(), $authorizedIps);
 
         $form = $this->buildForm($maintenceModel)->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $maintenanceUtility->updateMaintenanceStatus($form->getData());
+            $maintenanceUpdate($form->getData());
             return $this->redirectToRoute($request->attributes->get('_route'));
         }
 

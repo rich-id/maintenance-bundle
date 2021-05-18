@@ -1,18 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- https://phpunit.de/manual/current/en/appendixes.configuration.html -->
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" colors="true" bootstrap="vendor/autoload.php" failOnWarning="true" failOnRisky="true" forceCoversAnnotation="true">
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
+         colors="true"
+         bootstrap="vendor/autoload.php"
+         failOnWarning="true"
+         failOnRisky="true"
+         forceCoversAnnotation="true"
+>
+  <php>
+    <ini name="error_reporting" value="-1"/>
+    <env name="KERNEL_DIR" value="Tests/Resources/Kernel"/>
+    <env name="KERNEL_CLASS" value="RichId\MaintenanceBundle\Tests\Resources\Kernel\TestKernel"/>
+    <env name="SYMFONY_DEPRECATIONS_HELPER" value="weak"/>
+    <env name="SYMFONY_PHPUNIT_VERSION" value="8.5"/>
+  </php>
+
+  <testsuites>
+    <testsuite name="Maintenance Bundle Test Suite">
+      <directory suffix="Test.php">Tests</directory>
+    </testsuite>
+  </testsuites>
+
   <coverage processUncoveredFiles="true">
     <include>
       <directory suffix=".php">.</directory>
     </include>
+
     <exclude>
       <directory>bin</directory>
-      <directory>var</directory>
       <directory>DependencyInjection</directory>
       <directory>Resources</directory>
       <directory>Tests</directory>
       <directory>vendor</directory>
-      <file>phpunit-filter.php</file>
       <file>RichIdMaintenanceBundle.php</file>
     </exclude>
   </coverage>
@@ -24,21 +44,4 @@
       </arguments>
     </extension>
   </extensions>
-
-  <php>
-    <ini name="error_reporting" value="-1"/>
-    <server name="KERNEL_CLASS" value="RichId\MaintenanceBundle\Tests\Resources\config\TestKernel"/>
-
-    <!-- ###+ symfony/framework-bundle ### -->
-    <env name="APP_ENV" value="test"/>
-    <env name="APP_SECRET" value="AppSecret"/>
-    <env name="SYMFONY_DEPRECATIONS_HELPER" value="weak"/>
-    <!-- ###- symfony/framework-bundle ### -->
-  </php>
-
-  <testsuites>
-    <testsuite name="Project Test Suite">
-      <directory suffix="Test.php">Tests</directory>
-    </testsuite>
-  </testsuites>
 </phpunit>

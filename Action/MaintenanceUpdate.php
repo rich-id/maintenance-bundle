@@ -1,18 +1,19 @@
 <?php declare(strict_types=1);
 
-namespace RichId\MaintenanceBundle\Utility;
+namespace RichId\MaintenanceBundle\Action;
 
 use Lexik\Bundle\MaintenanceBundle\Drivers\DriverFactory;
+use RichId\MaintenanceBundle\Exception\MaintenanceStatusException;
 use RichId\MaintenanceBundle\Model\MaintenanceModel;
 
 /**
- * Class MaintenanceUtility.
+ * Class MaintenanceUpdate.
  *
- * @package   RichId\MaintenanceBundle\Utility
+ * @package   RichId\MaintenanceBundle\Action
  * @author    Hugo Dumazeau <hugo.dumazeau@rich-id.fr>
  * @copyright 2014 - 2021 RichId (https://www.rich-id.fr)
  */
-class MaintenanceUtility
+class MaintenanceUpdate
 {
     /** @var DriverFactory */
     protected $driverFactory;
@@ -22,12 +23,7 @@ class MaintenanceUtility
         $this->driverFactory = $driverFactory;
     }
 
-    public function buildMaintenanceModel(): MaintenanceModel
-    {
-        return new MaintenanceModel($this->driverFactory->getDriver()->decide());
-    }
-
-    public function updateMaintenanceStatus(MaintenanceModel $model): void
+    public function __invoke(MaintenanceModel $model): void
     {
         $driver = $this->driverFactory->getDriver();
 
@@ -38,7 +34,7 @@ class MaintenanceUtility
         }
 
         if ($driver->decide() === !$model->isLocked()) {
-            throw new \Exception();
+            throw new MaintenanceStatusException();
         }
     }
 }

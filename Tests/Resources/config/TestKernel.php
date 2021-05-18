@@ -30,5 +30,4 @@ class TestKernel extends DefaultTestKernel
     {
         return __DIR__;
     }
-
 }
