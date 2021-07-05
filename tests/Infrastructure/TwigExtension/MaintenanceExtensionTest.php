@@ -42,15 +42,15 @@ class MaintenanceExtensionTest extends TestCase
         $this->assertTrue($this->extension->isWebsiteInMaintenance());
     }
 
-    public function testHasntAccessToAdministration(): void
+    public function testHasntAccessToMaintenanceAdministration(): void
     {
         $this->authenticate(DummyUser::class, DummyUserFixtures::USER);
-        $this->assertFalse($this->extension->hasAccessToAdministration());
+        $this->assertFalse($this->extension->hasAccessToMaintenanceAdministration());
     }
 
-    public function testHasAccessToAdministration(): void
+    public function testHasAccessToMaintenanceAdministration(): void
     {
         $this->authenticate(DummyUser::class, DummyUserFixtures::USER_ADMIN);
-        $this->assertFalse($this->extension->hasAccessToAdministration());
+        $this->assertFalse($this->extension->hasAccessToMaintenanceAdministration());
     }
 }

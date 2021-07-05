@@ -1,6 +1,10 @@
-![Test Image 1](.github/maintenance-bundle.svg)
+![Logo](.github/maintenance-bundle.svg)
 
-Getting Started With MaintenanceBundle
-=======================================
-
-This version of the bundle requires Symfony 4.4+ and PHP 7.3+.
+[![Package version](https://img.shields.io/packagist/v/rich-id/maintenance-bundle)](https://packagist.org/packages/rich-id/maintenance-bundle)
+[![Actions Status](https://github.com/rich-id/maintenance-bundle/workflows/Tests/badge.svg)](https://github.com/rich-id/maintenance-bundle/actions)
+[![Coverage Status](https://coveralls.io/repos/github/rich-id/maintenance-bundle/badge.svg?branch=master)](https://coveralls.io/github/rich-id/maintenance-bundle?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/af5513a99208495d8c40/maintainability)](https://codeclimate.com/github/rich-id/maintenance-bundle/maintainability)
+![Symfony 4.4+](https://img.shields.io/badge/Symfony-4.4+-000000)
+![PHP 7.3+](https://img.shields.io/badge/PHP-7.3+-858ebb.svg)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/rich-id/maintenance-bundle/issues)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)

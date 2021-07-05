@@ -28,7 +28,7 @@ class MaintenanceExtension extends AbstractExtension
     {
         return [
             new TwigFunction('isWebsiteInMaintenance', [$this, 'isWebsiteInMaintenance']),
-            new TwigFunction('hasAccessToAdministration', [$this, 'hasAccessToAdministration']),
+            new TwigFunction('hasAccessToMaintenanceAdministration', [$this, 'hasAccessToMaintenanceAdministration']),
         ];
     }
 
@@ -37,7 +37,7 @@ class MaintenanceExtension extends AbstractExtension
         return ($this->isWebsiteClosed)();
     }
 
-    public function hasAccessToAdministration(): bool
+    public function hasAccessToMaintenanceAdministration(): bool
     {
         return $this->security->isGranted(RichIdMaintenanceBundle::ROLE_MAINTENANCE_ADMIN);
     }
