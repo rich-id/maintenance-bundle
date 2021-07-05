@@ -1,0 +1,16 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+    Symfony\Component\Security\Http\AccessMap: ~
+
+    Symfony\Component\Security\Core\Security: ~
+
+    RichId\MaintenanceBundle\Infrastructure\TwigExtension\MaintenanceExtension: ~
+
+    RichId\MaintenanceBundle\Tests\Resources\Stubs\EventDispatcherStub: ~
+    RichId\MaintenanceBundle\Tests\Resources\Stubs\LoggerStub: ~
+
+    RichId\MaintenanceBundle\Tests\Resources\Fixtures\DummyUserFixtures: ~

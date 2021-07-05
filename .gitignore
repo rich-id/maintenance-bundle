@@ -2,6 +2,9 @@
 /var/*
 !var/.gitkeep
 
+# Maintenance Lock
+/tests/maintenance-lock
+
 # Managed by Composer
 /bin
 /vendor
@@ -23,7 +26,13 @@
 .idea
 
 # Coverage
-coverage/
+/coverage
+/reports
 
 # Database
 /.db
+
+# Static utilities
+.php_cs.cache
+cghooks.lock
+

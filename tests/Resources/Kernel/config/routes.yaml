@@ -1,0 +1,2 @@
+rich_id_maintenance:
+    resource: '@RichIdMaintenanceBundle/Resources/config/routing/routing.xml'

@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <defaults autowire="true" autoconfigure="true" public="false" />
+
+        <service id="Lexik\Bundle\MaintenanceBundle\Drivers\DriverFactory" alias="lexik_maintenance.driver.factory"/>
+
+        <service id="RichId\MaintenanceBundle\Domain\EventListener\WebsiteClosedEventListener">
+            <tag name="kernel.event_listener" event="RichId\MaintenanceBundle\Domain\Event\WebsiteClosedEvent" />
+        </service>
+
+        <service id="RichId\MaintenanceBundle\Domain\EventListener\WebsiteOpenedEventListener">
+            <tag name="kernel.event_listener" event="RichId\MaintenanceBundle\Domain\Event\WebsiteOpenedEvent" />
+        </service>
+
+        <service id="RichId\MaintenanceBundle\Domain\Port\EventDispatcherInterface" alias="RichId\MaintenanceBundle\Infrastructure\Adapter\EventDispatcher"/>
+        <service id="RichId\MaintenanceBundle\Domain\Port\LoggerInterface" alias="RichId\MaintenanceBundle\Infrastructure\Adapter\Logger"/>
+        <service id="RichId\MaintenanceBundle\Domain\Port\MaintenanceDriverInterface" alias="RichId\MaintenanceBundle\Infrastructure\Adapter\MaintenanceDriver"/>
+
+        <service id="RichId\MaintenanceBundle\Domain\UseCase\CloseWebsite" />
+        <service id="RichId\MaintenanceBundle\Domain\UseCase\IsAnAuthorizedIp" />
+        <service id="RichId\MaintenanceBundle\Domain\UseCase\IsWebsiteClosed" />
+        <service id="RichId\MaintenanceBundle\Domain\UseCase\OpenWebsite" />
+
+        <service id="RichId\MaintenanceBundle\Infrastructure\Adapter\EventDispatcher" />
+        <service id="RichId\MaintenanceBundle\Infrastructure\Adapter\Logger" />
+        <service id="RichId\MaintenanceBundle\Infrastructure\Adapter\MaintenanceDriver" />
+
+        <service id="RichId\MaintenanceBundle\Infrastructure\FormType\MaintenanceFormType" />
+        <service id="RichId\MaintenanceBundle\Infrastructure\TwigExtension\MaintenanceExtension" />
+
+        <service id="RichId\MaintenanceBundle\UserInterface\Controller\MaintenanceAdminRoute" />
+    </services>
+</container>
