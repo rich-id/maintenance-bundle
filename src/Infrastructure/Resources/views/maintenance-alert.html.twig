@@ -1,13 +1,15 @@
 {% if isWebsiteInMaintenance() %}
     <style>
-        {% include 'RichIdMaintenanceBundle::style.css.twig' %}
+        {% include '@RichIdMaintenance/style.css.twig' %}
+
+        {% block custom_style %}{% endblock %}
     </style>
 
     <div class="rich-id-maintenance-flag">
         <div class="rich-id-maintenance-flag-title">{{ 'maintenance.website_lock'|trans({}, 'maintenance') }}</div>
         <div class="rich-id-maintenance-flag-content">{{ 'maintenance.website_lock_description'|trans({}, 'maintenance') }}</div>
 
-        {% if hasAccessToAdministration() %}
+        {% if hasAccessToMaintenanceAdministration() %}
             <div class="rich-id-maintenance-flag-link">
                 <a href="{{ path('maintenance_admin') }}">{{ 'maintenance.website_lock_link'|trans({}, 'maintenance') }}</a>
             </div>
