@@ -10,6 +10,8 @@ use RichId\MaintenanceBundle\Infrastructure\Adapter\MaintenanceDriver;
 use RichId\MaintenanceBundle\Infrastructure\TwigExtension\MaintenanceExtension;
 use RichId\MaintenanceBundle\Tests\Resources\Entity\DummyUser;
 use RichId\MaintenanceBundle\Tests\Resources\Fixtures\DummyUserFixtures;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * @covers \RichId\MaintenanceBundle\Infrastructure\TwigExtension\MaintenanceExtension
@@ -23,11 +25,36 @@ class MaintenanceExtensionTest extends TestCase
     /** @var MaintenanceDriver */
     public $maintenanceDriver;
 
+    /** @var RequestStack */
+    public $requestStack;
+
     public function testGetFunctions(): void
     {
-        $this->assertCount(2, $this->extension->getFunctions());
-        $this->assertEquals('isWebsiteInMaintenance', $this->extension->getFunctions()[0]->getName());
-        $this->assertEquals('hasAccessToMaintenanceAdministration', $this->extension->getFunctions()[1]->getName());
+        $this->assertCount(3, $this->extension->getFunctions());
+        $this->assertEquals('isCurrentIpAuthorizedToAccessToClosedWebsite', $this->extension->getFunctions()[0]->getName());
+        $this->assertEquals('isWebsiteInMaintenance', $this->extension->getFunctions()[1]->getName());
+        $this->assertEquals('hasAccessToMaintenanceAdministration', $this->extension->getFunctions()[2]->getName());
+    }
+
+    public function testIsCurrentIpAuthorizedToAccessToClosedWebsiteWithoutRequest(): void
+    {
+        $this->assertFalse($this->extension->isCurrentIpAuthorizedToAccessToClosedWebsite());
+    }
+
+    public function testIsCurrentIpAuthorizedToAccessToClosedWebsite(): void
+    {
+        $request = new Request([], [], [], [], [], ['REMOTE_ADDR' => '127.0.0.1']);
+        $this->requestStack->push($request);
+
+        $this->assertTrue($this->extension->isCurrentIpAuthorizedToAccessToClosedWebsite());
+    }
+
+    public function testIsNotCurrentIpAuthorizedToAccessToClosedWebsite(): void
+    {
+        $request = new Request([], [], [], [], [], ['REMOTE_ADDR' => '12.12.12.12']);
+        $this->requestStack->push($request);
+
+        $this->assertFalse($this->extension->isCurrentIpAuthorizedToAccessToClosedWebsite());
     }
 
     public function testIsNotWebsiteInMaintenance(): void

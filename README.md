@@ -14,10 +14,11 @@ This version of the bundle requires Symfony 4.4+ and PHP 7.3+.
 # Table of content
 
 1. [Installation](#1-installation)
-2. [Versioning](#3-versioning)
-3. [Contributing](#4-contributing)
-4. [Hacking](#5-hacking)
-5. [License](#6-license)
+2. [Usage](#2-usage)
+3. [Versioning](#3-versioning)
+4. [Contributing](#4-contributing)
+5. [Hacking](#5-hacking)
+6. [License](#6-license)
 
 # 1. Installation
 
@@ -56,7 +57,24 @@ rich_id_maintenance:
 You must also configure the lexik/maintenance-bundle. ([Lexik maintenance bundle documentation](https://github.com/lexik/LexikMaintenanceBundle/blob/master/Resources/doc/index.md))
 
 
-# 2. Versioning
+# 2. Usage
+
+The bundle generates a back-office page accessible to the role `ROLE_MAINTENANCE_ADMIN` on the `/administration/maintenance` url.
+
+![Admin](.github/admin.png)
+
+
+You can also integrate a flag into your site that is displayed when the site is under maintenance and the user is on the list of authorised IP addresses.
+
+```html
+{% include '@RichIdMaintenance/flag/main.html.twig' %}
+```
+
+
+![Admin](.github/flag.png)
+
+
+# 3. Versioning
 
 tour-bundle follows [semantic versioning](https://semver.org/). In short the scheme is MAJOR.MINOR.PATCH where
 1. MAJOR is bumped when there is a breaking change,
@@ -66,7 +84,7 @@ tour-bundle follows [semantic versioning](https://semver.org/). In short the sch
 Versions bellow 1.0.0 are considered experimental and breaking changes may occur at any time.
 
 
-# 3. Contributing
+# 4. Contributing
 
 Contributions are welcomed! There are many ways to contribute, and we appreciate all of them. Here are some of the major ones:
 
@@ -77,7 +95,7 @@ Contributions are welcomed! There are many ways to contribute, and we appreciate
 As a reminder, all contributors are expected to follow our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 
-# 4. Hacking
+# 5. Hacking
 
 You might use Docker and `docker-compose` to hack the project. Check out the following commands.
 
@@ -96,7 +114,7 @@ docker-compose exec application bash
 ```
 
 
-# 5. License
+# 6. License
 
 maintenance-bundle is distributed under the terms of the MIT license.
 
