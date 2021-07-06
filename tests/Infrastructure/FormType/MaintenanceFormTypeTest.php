@@ -21,8 +21,7 @@ final class MaintenanceFormTypeTest extends TypeTestCase
 
     public function testSubmitValidData(): void
     {
-        $model = new MaintenanceModel(false);
-
+        $model = new MaintenanceModel();
         $form = $this->factory->create(MaintenanceFormType::class, $model);
 
         $form->submit(['isClosed' => true]);

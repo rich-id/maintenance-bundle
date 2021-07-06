@@ -48,11 +48,7 @@ class MaintenanceExtension extends AbstractExtension
         $request = $this->requestStack->getMasterRequest();
         $ip = $request ? $request->getClientIp() : null;
 
-        if ($ip === null) {
-            return false;
-        }
-
-        return ($this->isAnAuthorizedIp)($ip);
+        return $ip !== null && ($this->isAnAuthorizedIp)($ip);
     }
 
     public function isWebsiteInMaintenance(): bool

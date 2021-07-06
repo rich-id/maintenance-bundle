@@ -9,8 +9,6 @@ $workingDirectory = strpos(__DIR__, 'vendor/richcongress/static-analysis') === f
 $finder = (new PhpCsFixer\Finder())
     ->in(realpath($workingDirectory))
     ->exclude('var')
-    ->exclude('node_modules')
-    ->exclude('elm-stuff')
     ->exclude('reports')
     ->exclude('coverage')
     ->exclude('vendor');

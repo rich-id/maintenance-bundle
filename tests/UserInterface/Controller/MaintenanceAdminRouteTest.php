@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace RichId\MaintenanceBundle\Tests\UserInterface\Controller;
 
-use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
 use RichCongress\TestSuite\TestCase\ControllerTestCase;
 use RichId\MaintenanceBundle\Domain\Event\WebsiteClosedEvent;
 use RichId\MaintenanceBundle\Domain\Event\WebsiteOpenedEvent;
 use RichId\MaintenanceBundle\Domain\UseCase\IsWebsiteClosed;
-use RichId\MaintenanceBundle\Infrastructure\Adapter\MaintenanceDriver;
+use RichId\MaintenanceBundle\Infrastructure\Adapter\MaintenanceManager;
 use RichId\MaintenanceBundle\Infrastructure\FormType\MaintenanceFormType;
 use RichId\MaintenanceBundle\Tests\Resources\Entity\DummyUser;
 use RichId\MaintenanceBundle\Tests\Resources\Fixtures\DummyUserFixtures;
@@ -19,7 +18,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @covers \RichId\MaintenanceBundle\UserInterface\Controller\MaintenanceAdminRoute
- * @TestConfig("fixtures")
  */
 final class MaintenanceAdminRouteTest extends ControllerTestCase
 {
@@ -32,8 +30,8 @@ final class MaintenanceAdminRouteTest extends ControllerTestCase
     /** @var LoggerStub */
     public $loggerStub;
 
-    /** @var MaintenanceDriver */
-    public $maintenanceDriver;
+    /** @var MaintenanceManager */
+    public $maintenanceManager;
 
     public function testRouteNotLogged(): void
     {
@@ -136,7 +134,7 @@ final class MaintenanceAdminRouteTest extends ControllerTestCase
 
     public function testRouteAsAdminPostCloseAlreadyClosed(): void
     {
-        $this->maintenanceDriver->getMaintenanceDriver()->lock();
+        $this->maintenanceManager->lock();
         $this->assertTrue(($this->isWebsiteClosed)());
 
         $user = $this->getReference(DummyUser::class, DummyUserFixtures::USER_ADMIN);
@@ -164,7 +162,7 @@ final class MaintenanceAdminRouteTest extends ControllerTestCase
 
     public function testRouteAsAdminPostOpen(): void
     {
-        $this->maintenanceDriver->getMaintenanceDriver()->lock();
+        $this->maintenanceManager->lock();
         $this->assertTrue(($this->isWebsiteClosed)());
 
         $user = $this->getReference(DummyUser::class, DummyUserFixtures::USER_ADMIN);

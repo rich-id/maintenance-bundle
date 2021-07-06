@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace RichId\MaintenanceBundle\Domain\UseCase;
 
-use RichId\MaintenanceBundle\Domain\Port\MaintenanceDriverInterface;
+use RichId\MaintenanceBundle\Domain\Port\MaintenanceManagerInterface;
 
 class IsWebsiteClosed
 {
-    /** @var MaintenanceDriverInterface */
-    protected $maintenanceDriver;
+    /** @var MaintenanceManagerInterface */
+    protected $maintenanceManager;
 
-    public function __construct(MaintenanceDriverInterface $maintenanceDriver)
+    public function __construct(MaintenanceManagerInterface $maintenanceManager)
     {
-        $this->maintenanceDriver = $maintenanceDriver;
+        $this->maintenanceManager = $maintenanceManager;
     }
 
     public function __invoke(): bool
     {
-        return $this->maintenanceDriver->getMaintenanceDriver()->decide();
+        return $this->maintenanceManager->isLocked();
     }
 }

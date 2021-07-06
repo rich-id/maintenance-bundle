@@ -6,7 +6,7 @@ namespace RichId\MaintenanceBundle\Tests\Infrastructure\TwigExtension;
 
 use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
 use RichCongress\TestSuite\TestCase\TestCase;
-use RichId\MaintenanceBundle\Infrastructure\Adapter\MaintenanceDriver;
+use RichId\MaintenanceBundle\Infrastructure\Adapter\MaintenanceManager;
 use RichId\MaintenanceBundle\Infrastructure\TwigExtension\MaintenanceExtension;
 use RichId\MaintenanceBundle\Tests\Resources\Entity\DummyUser;
 use RichId\MaintenanceBundle\Tests\Resources\Fixtures\DummyUserFixtures;
@@ -22,8 +22,8 @@ class MaintenanceExtensionTest extends TestCase
     /** @var MaintenanceExtension */
     public $extension;
 
-    /** @var MaintenanceDriver */
-    public $maintenanceDriver;
+    /** @var MaintenanceManager */
+    public $maintenanceManager;
 
     /** @var RequestStack */
     public $requestStack;
@@ -64,12 +64,12 @@ class MaintenanceExtensionTest extends TestCase
 
     public function testIsWebsiteInMaintenance(): void
     {
-        $this->maintenanceDriver->getMaintenanceDriver()->lock();
+        $this->maintenanceManager->lock();
 
         $this->assertTrue($this->extension->isWebsiteInMaintenance());
     }
 
-    public function testHasntAccessToMaintenanceAdministration(): void
+    public function testHasNotAccessToMaintenanceAdministration(): void
     {
         $this->authenticate(DummyUser::class, DummyUserFixtures::USER);
         $this->assertFalse($this->extension->hasAccessToMaintenanceAdministration());

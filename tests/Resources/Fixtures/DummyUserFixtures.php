@@ -9,8 +9,8 @@ use RichId\MaintenanceBundle\Tests\Resources\Entity\DummyUser;
 
 final class DummyUserFixtures extends AbstractFixture
 {
-    public const USER = '1';
-    public const USER_ADMIN = '2';
+    public const USER = 'regular';
+    public const USER_ADMIN = 'admin';
 
     protected function loadFixtures(): void
     {

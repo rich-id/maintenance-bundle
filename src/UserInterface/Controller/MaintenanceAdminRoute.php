@@ -59,8 +59,10 @@ class MaintenanceAdminRoute extends AbstractController
         $request = $this->requestStack->getCurrentRequest() ?? new Request();
         $isWebsiteClosed = ($this->isWebsiteClosed)();
 
-        $maintenceModel = new MaintenanceModel($isWebsiteClosed);
-        $form = $this->createForm(MaintenanceFormType::class, $maintenceModel)
+        $maintenanceModel = new MaintenanceModel();
+        $maintenanceModel->setIsClosed($isWebsiteClosed);
+        $form = $this
+            ->createForm(MaintenanceFormType::class, $maintenanceModel)
             ->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -74,6 +76,7 @@ class MaintenanceAdminRoute extends AbstractController
                     ($this->openWebsite)();
                 }
             } catch (WebsiteAlreadyClosedException | WebsiteAlreadyOpenedException $e) {
+                // Skip the error
             }
 
             return $this->redirectToRoute($request->attributes->get('_route'));

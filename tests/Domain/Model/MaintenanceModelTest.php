@@ -14,8 +14,8 @@ final class MaintenanceModelTest extends TestCase
 {
     public function testModel(): void
     {
-        $model = new MaintenanceModel(false);
-
+        $model = new MaintenanceModel();
+        $model->setIsClosed(false);
         $this->assertFalse($model->isClosed());
 
         $model->setIsClosed(true);

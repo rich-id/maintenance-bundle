@@ -9,7 +9,7 @@ use RichCongress\TestSuite\TestCase\TestCase;
 use RichId\MaintenanceBundle\Domain\Event\WebsiteOpenedEvent;
 use RichId\MaintenanceBundle\Domain\Exception\WebsiteAlreadyOpenedException;
 use RichId\MaintenanceBundle\Domain\UseCase\OpenWebsite;
-use RichId\MaintenanceBundle\Infrastructure\Adapter\MaintenanceDriver;
+use RichId\MaintenanceBundle\Infrastructure\Adapter\MaintenanceManager;
 use RichId\MaintenanceBundle\Tests\Resources\Stubs\EventDispatcherStub;
 use RichId\MaintenanceBundle\Tests\Resources\Stubs\LoggerStub;
 
@@ -28,8 +28,8 @@ final class OpenWebsiteTest extends TestCase
     /** @var LoggerStub */
     public $loggerStub;
 
-    /** @var MaintenanceDriver */
-    public $maintenanceDriver;
+    /** @var MaintenanceManager */
+    public $maintenanceManager;
 
     public function testUseCaseAlreadyOpened(): void
     {
@@ -41,12 +41,12 @@ final class OpenWebsiteTest extends TestCase
 
     public function testUseCase(): void
     {
-        $this->maintenanceDriver->getMaintenanceDriver()->lock();
-        $this->assertTrue($this->maintenanceDriver->getMaintenanceDriver()->decide());
+        $this->maintenanceManager->lock();
+        $this->assertTrue($this->maintenanceManager->isLocked());
 
         ($this->useCase)();
 
-        $this->assertFalse($this->maintenanceDriver->getMaintenanceDriver()->decide());
+        $this->assertFalse($this->maintenanceManager->isLocked());
 
         $this->assertCount(1, $this->eventDispatcherStub->getEvents());
         $this->assertInstanceOf(WebsiteOpenedEvent::class, $this->eventDispatcherStub->getEvents()[0]);
