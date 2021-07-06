@@ -28,7 +28,7 @@ final class DummyUserFixtures extends AbstractFixture
             self::USER_ADMIN,
             [
                 'username' => 'my_user_2',
-                'roles'    => ['ROLE_USER', 'MAINTENANCE_ADMIN'],
+                'roles'    => ['ROLE_USER', 'ROLE_MAINTENANCE_ADMIN'],
             ]
         );
     }

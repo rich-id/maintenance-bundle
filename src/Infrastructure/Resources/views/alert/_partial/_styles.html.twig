@@ -1,0 +1,55 @@
+<style>
+    .rich-id-maintenance-flag {
+        background: var(--rich-id-maintenance-alert-background);
+        border-bottom-right-radius: var(--rich-id-maintenance-alert-radius);
+        border-top-right-radius: var(--rich-id-maintenance-alert-radius);
+        bottom: var(--rich-id-maintenance-alert-position-bottom);
+        box-shadow: var(--rich-id-maintenance-alert-shadow);
+        left: 0;
+        position: fixed;
+        top: var(--rich-id-maintenance-alert-position-top);
+        width: var(--rich-id-maintenance-alert-width);
+        z-index: var(--rich-id-maintenance-alert-z-index);
+    }
+
+    .rich-id-maintenance-flag-title {
+        color: var(--rich-id-maintenance-alert-title);
+        font-family: var(--rich-id-maintenance-font-family);
+        font-weight: 600;
+        padding: 5px 15px;
+        text-align: center;
+        word-break: break-word;
+    }
+
+    .rich-id-maintenance-flag-content {
+        color: var(--rich-id-maintenance-alert-content);
+        font-family: var(--rich-id-maintenance-font-family);
+        padding: 5px 15px;
+        text-align: center;
+        word-break: break-word;
+    }
+
+    .rich-id-maintenance-flag-link {
+        padding: 5px 15px;
+        text-align: center;
+    }
+
+    .rich-id-maintenance-flag-link a {
+        text-decoration: underline;
+    }
+
+    .rich-id-maintenance-flag-link a:hover {
+        text-decoration: none;
+    }
+
+    .rich-id-maintenance-flag-link a,
+    .rich-id-maintenance-flag-link a:hover {
+        color: var(--rich-id-maintenance-alert-title) !important;
+    }
+
+    @media print {
+        .rich-id-maintenance-flag {
+            display: none;
+        }
+    }
+</style>

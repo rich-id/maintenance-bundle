@@ -60,7 +60,8 @@ class MaintenanceAdminRoute extends AbstractController
         $isWebsiteClosed = ($this->isWebsiteClosed)();
 
         $maintenceModel = new MaintenanceModel($isWebsiteClosed);
-        $form = $this->createForm(MaintenanceFormType::class, $maintenceModel);
+        $form = $this->createForm(MaintenanceFormType::class, $maintenceModel)
+            ->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var MaintenanceModel $data */
@@ -79,7 +80,7 @@ class MaintenanceAdminRoute extends AbstractController
         }
 
         return $this->render(
-            '@RichIdMaintenance/administration/maintenance.html.twig',
+            '@RichIdMaintenance/admin/main.html.twig',
             [
                 'form'           => $form->createView(),
                 'isAuthorizedIp' => ($this->isAnAuthorizedIp)($request->getClientIp() ?? ''),

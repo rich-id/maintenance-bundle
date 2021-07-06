@@ -1,9 +1,11 @@
 maintenance.administration.alert: Attention, vous ne faites pas partie de la liste des IP autorisées. Si vous décidez de fermer le site, vous n'aurez plus accès à celui-ci.
-maintenance.administration.is_locked: Site en maintenance ?
+maintenance.administration.is_locked: Site en maintenance
 maintenance.administration.save: Enregistrer
 
 maintenance.log.website_closed: "Le site est en maintenance. Date: %date%. User: %user%."
 maintenance.log.website_opened: "Le site n'est plus en maintenance. Date: %date%. User: %user%."
+
+maintenance.maintenance: Maintenance
 
 maintenance.website_lock: Site en maintenance
 maintenance.website_lock_link: Administration

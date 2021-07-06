@@ -1,0 +1,78 @@
+<style>
+    :root {
+        --rich-id-maintenance-black: #000000;
+        --rich-id-maintenance-dark: #333333;
+        --rich-id-maintenance-white: #FFFFFF;
+
+        --rich-id-maintenance-primary: #e6007e;
+        --rich-id-maintenance-primary-variant: #c20069;
+
+        --rich-id-maintenance-warning: #FF645B;
+        --rich-id-maintenance-warning-variant: #EA5A52;
+
+        --rich-id-maintenance-toggle-backgroud: #767676;
+        --rich-id-maintenance-toggle-checked-backgroud: #42af31;
+
+        --rich-id-maintenance-alert-background: #E85A52;
+        --rich-id-maintenance-alert-title: #FFFFFF;
+        --rich-id-maintenance-alert-content: #FFFFFF;
+
+        --rich-id-maintenance-alert-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 0 10px 0 rgba(0, 0, 0, 0.3);
+        --rich-id-maintenance-alert-radius: 20px;
+
+        --rich-id-maintenance-alert-position-top: initial;
+        --rich-id-maintenance-alert-position-bottom: 40px;
+
+        --rich-id-maintenance-alert-width: 150px;
+        --rich-id-maintenance-alert-z-index: 1000000;
+
+        --rich-id-maintenance-font-family: Arial, sans-serif;
+        --rich-id-maintenance-admin-font-family: Arial, sans-serif;
+    }
+
+    .rich-id-maintenance-admin-header {
+        align-items: center;
+        background: var(--rich-id-maintenance-dark);
+        color: var(--rich-id-maintenance-white);
+        display: flex;
+        font-family: var(--rich-id-maintenance-admin-font-family);
+        font-size: 32px;
+        font-weight: 300;
+        height: 88px;
+        justify-content: center;
+        letter-spacing: normal;
+        padding: 0 15px;
+        text-align: center;
+    }
+
+    .rich-id-maintenance-admin-body-container {
+        padding: 15px;
+    }
+
+    .rich-id-maintenance-admin-body {
+        background: var(--rich-id-maintenance-white);
+        box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+        padding: 30px;
+    }
+
+
+    .rich-id-maintenance-button-primary {
+        background: var(--rich-id-maintenance-primary);
+        border-radius: 4px;
+        border: 1px solid var(--rich-id-maintenance-primary);
+        color: var(--rich-id-maintenance-white);
+        font-family: var(--rich-id-maintenance-font-family);
+        font-size: 16px;
+        letter-spacing: normal;
+        line-height: 16px;
+        padding: 10px 16px 12px 16px;
+    }
+
+    .rich-id-maintenance-button-primary:hover {
+        background: var(--rich-id-maintenance-primary-variant);
+        border: 1px solid var(--rich-id-maintenance-primary-variant);
+        cursor: pointer;
+    }
+</style>
+
+{% block custom_style %}{% endblock %}

@@ -1,0 +1,27 @@
+{% include '@RichIdMaintenance/_styles.html.twig' %}
+{% include '@RichIdMaintenance/admin/_partial/_styles.html.twig' %}
+
+<div class="rich-id-maintenance">
+    <div class="rich-id-maintenance-admin-header">
+        {{ 'maintenance.maintenance'|trans({}, 'maintenance') }}
+    </div>
+
+    <div class="rich-id-maintenance-admin-body-container">
+        <div class="rich-id-maintenance-admin-body">
+            {% if isAuthorizedIp == false %}
+                <div class="rich-id-maintenance-warning">{{ 'maintenance.administration.alert'|trans({}, 'maintenance') }}</div>
+            {% endif %}
+
+            {{ form_start(form, {'action': path('maintenance_admin')}) }}
+                <div class="rich-id-maintenance-toggle">
+                    {{ form_widget(form.isClosed) }}
+                    {{ form_label(form.isClosed) }}
+                </div>
+
+                <div class="rich-id-maintenance-actions">
+                    {{ form_widget(form.save, { 'attr': {'class': 'rich-id-maintenance-button-primary'} }) }}
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>

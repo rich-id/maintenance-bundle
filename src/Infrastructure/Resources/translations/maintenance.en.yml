@@ -1,9 +1,11 @@
 maintenance.administration.alert: Please note that you are not on the list of authorised IPs. If you decide to close the site, you will no longer have access to it.
-maintenance.administration.is_locked: Site in maintenance ?
+maintenance.administration.is_locked: Site in maintenance
 maintenance.administration.save: Save
 
 maintenance.log.website_closed: "The site is under maintenance. Date: %date%. User: %user%."
 maintenance.log.website_opened: "The site is no longer under maintenance. Date: %date%. User: %user%."
+
+maintenance.maintenance: Maintenance
 
 maintenance.website_lock: Site in maintenance
 maintenance.website_lock_description: You are one of the authorized ip addresses
