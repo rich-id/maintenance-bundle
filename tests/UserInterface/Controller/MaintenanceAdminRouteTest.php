@@ -60,6 +60,7 @@ final class MaintenanceAdminRouteTest extends ControllerTestCase
 
         $this->assertStringContainsString('Save', $content);
         $this->assertStringContainsString('Site in maintenance', $content);
+        $this->assertStringNotContainsString('Please note that you are not on the list of authorised IPs. If you decide to close the site, you will no longer have access to it.', $content);
     }
 
     public function testRouteAsAdminAndNotAuthorizedIp(): void
