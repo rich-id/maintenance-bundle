@@ -7,12 +7,7 @@ namespace RichId\MaintenanceBundle\Domain\Model;
 class MaintenanceModel
 {
     /** @var bool */
-    private $isClosed;
-
-    public function __construct(bool $isClosed)
-    {
-        $this->isClosed = $isClosed;
-    }
+    private $isClosed = false;
 
     public function setIsClosed(bool $isClosed): self
     {

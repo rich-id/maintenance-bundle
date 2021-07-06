@@ -9,7 +9,7 @@ use RichCongress\TestSuite\TestCase\TestCase;
 use RichId\MaintenanceBundle\Domain\Event\WebsiteClosedEvent;
 use RichId\MaintenanceBundle\Domain\Exception\WebsiteAlreadyClosedException;
 use RichId\MaintenanceBundle\Domain\UseCase\CloseWebsite;
-use RichId\MaintenanceBundle\Infrastructure\Adapter\MaintenanceDriver;
+use RichId\MaintenanceBundle\Infrastructure\Adapter\MaintenanceManager;
 use RichId\MaintenanceBundle\Tests\Resources\Stubs\EventDispatcherStub;
 use RichId\MaintenanceBundle\Tests\Resources\Stubs\LoggerStub;
 
@@ -28,26 +28,26 @@ final class CloseWebsiteTest extends TestCase
     /** @var LoggerStub */
     public $loggerStub;
 
-    /** @var MaintenanceDriver */
-    public $maintenanceDriver;
+    /** @var MaintenanceManager */
+    public $maintenanceManager;
 
     public function testUseCaseAlreadyClose(): void
     {
         $this->expectException(WebsiteAlreadyClosedException::class);
         $this->expectExceptionMessage('The website is already closed.');
 
-        $this->maintenanceDriver->getMaintenanceDriver()->lock();
+        $this->maintenanceManager->lock();
 
         ($this->useCase)();
     }
 
     public function testUseCase(): void
     {
-        $this->assertFalse($this->maintenanceDriver->getMaintenanceDriver()->decide());
+        $this->assertFalse($this->maintenanceManager->isLocked());
 
         ($this->useCase)();
 
-        $this->assertTrue($this->maintenanceDriver->getMaintenanceDriver()->decide());
+        $this->assertTrue($this->maintenanceManager->isLocked());
 
         $this->assertCount(1, $this->eventDispatcherStub->getEvents());
         $this->assertInstanceOf(WebsiteClosedEvent::class, $this->eventDispatcherStub->getEvents()[0]);

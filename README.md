@@ -1,7 +1,5 @@
 ![Logo](.github/maintenance-bundle.svg)
 
-This version of the bundle requires Symfony 4.4+ and PHP 7.3+.
-
 [![Package version](https://img.shields.io/packagist/v/rich-id/maintenance-bundle)](https://packagist.org/packages/rich-id/maintenance-bundle)
 [![Actions Status](https://github.com/rich-id/maintenance-bundle/workflows/Tests/badge.svg)](https://github.com/rich-id/maintenance-bundle/actions)
 [![Coverage Status](https://coveralls.io/repos/github/rich-id/maintenance-bundle/badge.svg?branch=master)](https://coveralls.io/github/rich-id/maintenance-bundle?branch=master)
@@ -22,8 +20,7 @@ This version of the bundle requires Symfony 4.4+ and PHP 7.3+.
 
 # 1. Installation
 
-This version of the bundle requires Symfony 4.4+ and PHP 7.3+.
-It is necessary to install lexik/maintenance-bundle
+This version of the bundle requires Symfony 4.4+ and PHP 7.3+. Moreover, remember to properly configure the [lexik/maintenance-bundle](https://packagist.org/packages/lexik/maintenance-bundle).
 
 ### 1.1 Composer
 
@@ -33,7 +30,7 @@ composer require rich-id/maintenance-bundle
 
 ### 1.2 Bundles declaration
 
-After the installation, make sure that the bundle are declared correctly within the Kernel's bundles list. This is done automatically if you use Symfony Flex.
+After the installation, make sure that the bundle are declared correctly within the Kernel's bundles list. This should be done automatically if you use Symfony Flex.
 
 ```php
 return [
@@ -46,7 +43,6 @@ return [
 
 ## 1.3 Mandatory configuration
 
-Add in `config/routes` the definition of the bundle routes:
 
 
 ```yaml
@@ -54,24 +50,22 @@ rich_id_maintenance:
     resource: "@RichIdMaintenanceBundle/Resources/config/routing/routing.xml"
 ```
 
-You must also configure the lexik/maintenance-bundle. ([Lexik maintenance bundle documentation](https://github.com/lexik/LexikMaintenanceBundle/blob/master/Resources/doc/index.md))
+You must also configure the [lexik/maintenance-bundle](https://packagist.org/packages/lexik/maintenance-bundle). Please checkout the [Lexik maintenance bundle documentation](https://github.com/lexik/LexikMaintenanceBundle/blob/master/Resources/doc/index.md).
 
 
 # 2. Usage
 
 The bundle generates a back-office page accessible to the role `ROLE_MAINTENANCE_ADMIN` on the `/administration/maintenance` url.
 
-![Admin](.github/admin.png)
+![Admin](.github/images/admin.png)
 
-
-You can also integrate a flag into your site that is displayed when the site is under maintenance and the user is on the list of authorised IP addresses.
+You can also integrate a flag on your site displayed when the site is under maintenance, and the user is on the list of authorised IP addresses. This lets the authorised user to still use the website while in maintenance, but to remind that nobody can access it.
 
 ```html
 {% include '@RichIdMaintenance/flag/main.html.twig' %}
 ```
 
-
-![Admin](.github/flag.png)
+![Admin](.github/images/flag.png)
 
 
 # 3. Versioning
@@ -118,4 +112,4 @@ docker-compose exec application bash
 
 maintenance-bundle is distributed under the terms of the MIT license.
 
-See [LICENSE](LICENSE.md) for details.
+See [LICENSE](LICENSE) for details.

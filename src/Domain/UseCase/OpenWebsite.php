@@ -8,7 +8,7 @@ use RichId\MaintenanceBundle\Domain\Event\WebsiteOpenedEvent;
 use RichId\MaintenanceBundle\Domain\Exception\WebsiteAlreadyOpenedException;
 use RichId\MaintenanceBundle\Domain\Port\EventDispatcherInterface;
 use RichId\MaintenanceBundle\Domain\Port\LoggerInterface;
-use RichId\MaintenanceBundle\Domain\Port\MaintenanceDriverInterface;
+use RichId\MaintenanceBundle\Domain\Port\MaintenanceManagerInterface;
 
 class OpenWebsite
 {
@@ -18,25 +18,26 @@ class OpenWebsite
     /** @var LoggerInterface */
     protected $logger;
 
-    /** @var MaintenanceDriverInterface */
-    protected $maintenanceDriver;
+    /** @var MaintenanceManagerInterface */
+    protected $maintenanceManager;
 
-    public function __construct(EventDispatcherInterface $eventDispatcher, LoggerInterface $logger, MaintenanceDriverInterface $maintenanceDriver)
-    {
+    public function __construct(
+        EventDispatcherInterface $eventDispatcher,
+        LoggerInterface $logger,
+        MaintenanceManagerInterface $maintenanceManager
+    ) {
         $this->eventDispatcher = $eventDispatcher;
         $this->logger = $logger;
-        $this->maintenanceDriver = $maintenanceDriver;
+        $this->maintenanceManager = $maintenanceManager;
     }
 
     public function __invoke(): void
     {
-        $driver = $this->maintenanceDriver->getMaintenanceDriver();
-
-        if (!$driver->decide()) {
+        if (!$this->maintenanceManager->isLocked()) {
             throw new WebsiteAlreadyOpenedException();
         }
 
-        $driver->unlock();
+        $this->maintenanceManager->unlock();
         $this->eventDispatcher->dispatchWebsiteOpenedEvent(new WebsiteOpenedEvent());
     }
 }

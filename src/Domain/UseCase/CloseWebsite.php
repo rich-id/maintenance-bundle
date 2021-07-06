@@ -8,7 +8,7 @@ use RichId\MaintenanceBundle\Domain\Event\WebsiteClosedEvent;
 use RichId\MaintenanceBundle\Domain\Exception\WebsiteAlreadyClosedException;
 use RichId\MaintenanceBundle\Domain\Port\EventDispatcherInterface;
 use RichId\MaintenanceBundle\Domain\Port\LoggerInterface;
-use RichId\MaintenanceBundle\Domain\Port\MaintenanceDriverInterface;
+use RichId\MaintenanceBundle\Domain\Port\MaintenanceManagerInterface;
 
 class CloseWebsite
 {
@@ -18,25 +18,26 @@ class CloseWebsite
     /** @var LoggerInterface */
     protected $logger;
 
-    /** @var MaintenanceDriverInterface */
-    protected $maintenanceDriver;
+    /** @var MaintenanceManagerInterface */
+    protected $maintenanceManager;
 
-    public function __construct(EventDispatcherInterface $eventDispatcher, LoggerInterface $logger, MaintenanceDriverInterface $maintenanceDriver)
-    {
+    public function __construct(
+        EventDispatcherInterface $eventDispatcher,
+        LoggerInterface $logger,
+        MaintenanceManagerInterface $maintenanceManager
+    ) {
         $this->eventDispatcher = $eventDispatcher;
         $this->logger = $logger;
-        $this->maintenanceDriver = $maintenanceDriver;
+        $this->maintenanceManager = $maintenanceManager;
     }
 
     public function __invoke(): void
     {
-        $driver = $this->maintenanceDriver->getMaintenanceDriver();
-
-        if ($driver->decide()) {
+        if ($this->maintenanceManager->isLocked()) {
             throw new WebsiteAlreadyClosedException();
         }
 
-        $driver->lock();
+        $this->maintenanceManager->lock();
         $this->eventDispatcher->dispatchWebsiteClosedEvent(new WebsiteClosedEvent());
     }
 }

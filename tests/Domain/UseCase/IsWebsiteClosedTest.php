@@ -7,7 +7,7 @@ namespace RichId\MaintenanceBundle\Tests\Domain\UseCase;
 use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
 use RichCongress\TestSuite\TestCase\TestCase;
 use RichId\MaintenanceBundle\Domain\UseCase\IsWebsiteClosed;
-use RichId\MaintenanceBundle\Infrastructure\Adapter\MaintenanceDriver;
+use RichId\MaintenanceBundle\Infrastructure\Adapter\MaintenanceManager;
 
 /**
  * @covers \RichId\MaintenanceBundle\Domain\UseCase\IsWebsiteClosed
@@ -18,8 +18,8 @@ final class IsWebsiteClosedTest extends TestCase
     /** @var IsWebsiteClosed */
     public $useCase;
 
-    /** @var MaintenanceDriver */
-    public $maintenanceDriver;
+    /** @var MaintenanceManager */
+    public $maintenanceManager;
 
     public function testUseCaseClosed(): void
     {
@@ -28,7 +28,7 @@ final class IsWebsiteClosedTest extends TestCase
 
     public function testUseCaseOpened(): void
     {
-        $this->maintenanceDriver->getMaintenanceDriver()->lock();
+        $this->maintenanceManager->lock();
 
         $this->assertTrue(($this->useCase)());
     }
