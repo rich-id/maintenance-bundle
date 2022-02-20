@@ -2,9 +2,11 @@
 {% include '@RichIdMaintenance/admin/_partial/_styles.html.twig' %}
 
 <div class="rich-id-maintenance">
-    <div class="rich-id-maintenance-admin-header">
-        {{ 'maintenance.maintenance'|trans({}, 'maintenance') }}
-    </div>
+    {% if withoutHeader is not defined %}
+        <div class="rich-id-maintenance-admin-header">
+            {{ 'maintenance.maintenance'|trans({}, 'maintenance') }}
+        </div>
+    {% endif %}
 
     <div class="rich-id-maintenance-admin-body-container">
         <div class="rich-id-maintenance-admin-body">

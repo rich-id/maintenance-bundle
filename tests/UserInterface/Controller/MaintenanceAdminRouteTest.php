@@ -17,6 +17,7 @@ use RichId\MaintenanceBundle\Tests\Resources\Stubs\LoggerStub;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
+ * @covers \RichId\MaintenanceBundle\Infrastructure\Rule\HasAccessToAdministration
  * @covers \RichId\MaintenanceBundle\UserInterface\Controller\MaintenanceAdminRoute
  */
 final class MaintenanceAdminRouteTest extends ControllerTestCase

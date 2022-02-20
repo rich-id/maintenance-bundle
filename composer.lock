@@ -4,30 +4,30 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "69dd41de111e9cec9e4614ec1af7a086",
+    "content-hash": "80fc748099b91a0fcc14aa9f6eb158c6",
     "packages": [
         {
-            "name": "lexik/maintenance-bundle",
-            "version": "v2.1.5",
+            "name": "prolix/maintenance-bundle",
+            "version": "2.1.12",
             "source": {
                 "type": "git",
-                "url": "https://github.com/lexik/LexikMaintenanceBundle.git",
-                "reference": "3a3e916776934a95834235e4a1d71e4595d515f5"
+                "url": "https://github.com/prolixtechnikos/LexikMaintenanceBundle.git",
+                "reference": "bcdbfb42517ffd4dd558033378593244edc7a07c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lexik/LexikMaintenanceBundle/zipball/3a3e916776934a95834235e4a1d71e4595d515f5",
-                "reference": "3a3e916776934a95834235e4a1d71e4595d515f5",
+                "url": "https://api.github.com/repos/prolixtechnikos/LexikMaintenanceBundle/zipball/bcdbfb42517ffd4dd558033378593244edc7a07c",
+                "reference": "bcdbfb42517ffd4dd558033378593244edc7a07c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.9",
-                "symfony/framework-bundle": "~2.7|~3.0|^4.0",
-                "symfony/translation": "~2.7|~3.0|^4.0"
+                "symfony/framework-bundle": "~2.7|~3.0|^4.0|^5.0",
+                "symfony/translation": "~2.7|~3.0|^4.0|^5.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.8|~5.7.11",
-                "symfony/phpunit-bridge": "~2.7|~3.0|^4.0"
+                "phpunit/phpunit": "8.5.*",
+                "symfony/phpunit-bridge": "~2.7|~3.0|^4.0|^5.0"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -46,12 +46,12 @@
             ],
             "authors": [
                 {
-                    "name": "Dev Lexik",
-                    "email": "dev@lexik.fr"
-                },
-                {
                     "name": "Gilles Gauthier",
                     "email": "g.gauthier@lexik.fr"
+                },
+                {
+                    "name": "Dev Lexik",
+                    "email": "dev@lexik.fr"
                 },
                 {
                     "name": "Djuri Baars",
@@ -66,10 +66,9 @@
                 "maintenance"
             ],
             "support": {
-                "issues": "https://github.com/lexik/LexikMaintenanceBundle/issues",
-                "source": "https://github.com/lexik/LexikMaintenanceBundle/tree/master"
+                "source": "https://github.com/prolixtechnikos/LexikMaintenanceBundle/tree/2.1.12"
             },
-            "time": "2018-02-14T10:18:33+00:00"
+            "time": "2020-10-24T07:43:33+00:00"
         },
         {
             "name": "psr/cache",

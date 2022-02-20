@@ -19,8 +19,15 @@
         --rich-id-maintenance-alert-title: #FFFFFF;
         --rich-id-maintenance-alert-content: #FFFFFF;
 
+        --rich-id-maintenance-button-radius: 4;
+        --rich-id-maintenance-items-radius: 0;
+
+        --rich-id-maintenance-alert-left: 0;
+        --rich-id-maintenance-alert-right: auto;
+        --rich-id-maintenance-alert-radius-left: 0;
+        --rich-id-maintenance-alert-radius-right: 20px;
+
         --rich-id-maintenance-alert-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 0 10px 0 rgba(0, 0, 0, 0.3);
-        --rich-id-maintenance-alert-radius: 20px;
 
         --rich-id-maintenance-alert-position-top: initial;
         --rich-id-maintenance-alert-position-bottom: 40px;
@@ -53,6 +60,7 @@
 
     .rich-id-maintenance-admin-body {
         background: var(--rich-id-maintenance-white);
+        border-radius: calc(var(--rich-id-maintenance-items-radius) * 1px);
         box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.2);
         padding: 30px;
     }
@@ -60,7 +68,7 @@
 
     .rich-id-maintenance-button-primary {
         background: var(--rich-id-maintenance-primary);
-        border-radius: 4px;
+        border-radius: calc(var(--rich-id-maintenance-button-radius) * 1px);
         border: 1px solid var(--rich-id-maintenance-primary);
         color: var(--rich-id-maintenance-white);
         font-family: var(--rich-id-maintenance-font-family);

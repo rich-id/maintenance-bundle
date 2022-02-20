@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
+ * @covers \RichId\MaintenanceBundle\Infrastructure\Rule\HasAccessToAdministration
  * @covers \RichId\MaintenanceBundle\Infrastructure\TwigExtension\MaintenanceExtension
  * @TestConfig("fixtures")
  */

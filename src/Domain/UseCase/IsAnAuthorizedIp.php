@@ -19,6 +19,6 @@ class IsAnAuthorizedIp
 
     public function __invoke(string $ip): bool
     {
-        return IpUtils::checkIp($ip, $this->ipAddresses);
+        return IpUtils::checkIp($ip, $this->ipAddresses ?? []);
     }
 }

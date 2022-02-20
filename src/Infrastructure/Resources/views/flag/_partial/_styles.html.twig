@@ -1,11 +1,14 @@
 <style>
     .rich-id-maintenance-flag {
         background: var(--rich-id-maintenance-alert-background);
-        border-bottom-right-radius: var(--rich-id-maintenance-alert-radius);
-        border-top-right-radius: var(--rich-id-maintenance-alert-radius);
+        border-bottom-left-radius: var(--rich-id-maintenance-alert-radius-left);
+        border-top-left-radius: var(--rich-id-maintenance-alert-radius-left);
+        border-bottom-right-radius: var(--rich-id-maintenance-alert-radius-right);
+        border-top-right-radius: var(--rich-id-maintenance-alert-radius-right);
         bottom: var(--rich-id-maintenance-alert-position-bottom);
         box-shadow: var(--rich-id-maintenance-alert-shadow);
-        left: 0;
+        left: var(--rich-id-maintenance-alert-left);
+        right: var(--rich-id-maintenance-alert-right);
         position: fixed;
         top: var(--rich-id-maintenance-alert-position-top);
         width: var(--rich-id-maintenance-alert-width);
