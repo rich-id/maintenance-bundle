@@ -17,7 +17,8 @@ class HasAccessToAdministration
     /** @var ParameterBagInterface */
     protected $parameterBag;
 
-    public function __construct(Security $security, ParameterBagInterface $parameterBag) {
+    public function __construct(Security $security, ParameterBagInterface $parameterBag)
+    {
         $this->security = $security;
         $this->parameterBag = $parameterBag;
     }
@@ -25,6 +26,7 @@ class HasAccessToAdministration
     public function __invoke(): bool
     {
         $role = $this->parameterBag->get('rich_id_maintenance.admistration_role') ?? RichIdMaintenanceBundle::ROLE_MAINTENANCE_ADMIN;
+
         return $this->security->isGranted($role);
     }
 }
