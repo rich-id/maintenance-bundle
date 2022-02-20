@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace RichId\MaintenanceBundle\Infrastructure\Rule;
 
-use RichId\MaintenanceBundle\Domain\Port\EventDispatcherInterface;
 use RichId\MaintenanceBundle\Infrastructure\RichIdMaintenanceBundle;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Security\Core\Security;
 
 class HasAccessToAdministration
 {
-    /** @var EventDispatcherInterface */
+    /** @var Security */
     protected $security;
 
     /** @var ParameterBagInterface */
