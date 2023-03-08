@@ -10,3 +10,5 @@ maintenance.maintenance: Maintenance
 maintenance.website_lock: Site en maintenance
 maintenance.website_lock_link: Administration
 maintenance.website_lock_description: Vous faite partie des IP autorisées
+
+lexik_maintenance.success_lock_redis: Le serveur est en maintenance via le driver redis.
