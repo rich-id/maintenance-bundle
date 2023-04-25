@@ -20,12 +20,12 @@ class MaintenanceAdministrationVoter extends Voter
         $this->hasAccessToAdministration = $hasAccessToAdministration;
     }
 
-    protected function supports($attribute, $subject)
+    protected function supports(string $attribute, $subject)
     {
         return \in_array($attribute, [self::EDIT_ADMINISTRATION_MAINTENANCE], true);
     }
 
-    protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
+    protected function voteOnAttribute(string $attribute, $subject, TokenInterface $token)
     {
         switch ($attribute) {
             case self::EDIT_ADMINISTRATION_MAINTENANCE:

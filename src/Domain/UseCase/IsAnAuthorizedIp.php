@@ -14,7 +14,7 @@ class IsAnAuthorizedIp
 
     public function __construct(ParameterBagInterface $parameterBag)
     {
-        $this->ipAddresses = $parameterBag->get('lexik_maintenance.authorized.ips');
+        $this->ipAddresses = (array) $parameterBag->get('lexik_maintenance.authorized.ips');
     }
 
     public function __invoke(string $ip): bool
