@@ -12,12 +12,11 @@ use RichId\MaintenanceBundle\Domain\UseCase\IsAnAuthorizedIp;
 use RichId\MaintenanceBundle\Domain\UseCase\IsWebsiteClosed;
 use RichId\MaintenanceBundle\Domain\UseCase\OpenWebsite;
 use RichId\MaintenanceBundle\Infrastructure\FormType\MaintenanceFormType;
-use RichId\MaintenanceBundle\Infrastructure\Rule\HasAccessToAdministration;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class MaintenanceAdminRoute extends AbstractController
 {
@@ -36,31 +35,23 @@ class MaintenanceAdminRoute extends AbstractController
     /** @var IsWebsiteClosed */
     protected $isWebsiteClosed;
 
-    /** @var HasAccessToAdministration */
-    protected $hasAccessToAdministration;
-
     public function __construct(
         RequestStack $requestStack,
         IsAnAuthorizedIp $isAnAuthorizedIp,
         CloseWebsite $closeWebsite,
         OpenWebsite $openWebsite,
-        IsWebsiteClosed $isWebsiteClosed,
-        HasAccessToAdministration $hasAccessToAdministration
+        IsWebsiteClosed $isWebsiteClosed
     ) {
         $this->requestStack = $requestStack;
         $this->isAnAuthorizedIp = $isAnAuthorizedIp;
         $this->closeWebsite = $closeWebsite;
         $this->openWebsite = $openWebsite;
         $this->isWebsiteClosed = $isWebsiteClosed;
-        $this->hasAccessToAdministration = $hasAccessToAdministration;
     }
 
+    /** @IsGranted("EDIT_ADMINISTRATION_MAINTENANCE") */
     public function __invoke(): Response
     {
-        if (!($this->hasAccessToAdministration)()) {
-            throw new AccessDeniedException();
-        }
-
         $request = $this->requestStack->getCurrentRequest() ?? new Request();
         $isWebsiteClosed = ($this->isWebsiteClosed)();
 

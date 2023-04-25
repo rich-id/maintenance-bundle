@@ -25,8 +25,7 @@ final class LoggerTest extends TestCase
 
     public function testLogSiteClosed(): void
     {
-        $user = $this->getReference(DummyUser::class, DummyUserFixtures::USER);
-        $this->authenticateUser($user);
+        $this->authenticate(DummyUser::class, DummyUserFixtures::USER);
 
         $this->adapter->logSiteClosed();
 
@@ -52,8 +51,7 @@ final class LoggerTest extends TestCase
 
     public function testLogSiteOpened(): void
     {
-        $user = $this->getReference(DummyUser::class, DummyUserFixtures::USER);
-        $this->authenticateUser($user);
+        $this->authenticate(DummyUser::class, DummyUserFixtures::USER);
 
         $this->adapter->logSiteOpened();
 

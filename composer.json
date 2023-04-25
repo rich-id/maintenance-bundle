@@ -1,6 +1,6 @@
 {
     "name": "rich-id/maintenance-bundle",
-    "description": "A maintenance bundle for Symfony 4.4",
+    "description": "A maintenance bundle for Symfony 5.0",
     "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
@@ -20,6 +20,7 @@
         "prolix/maintenance-bundle": "^2.1",
         "psr/log": "^1.1",
         "richcongress/bundle-toolbox": "^1.1",
+        "sensio/framework-extra-bundle": "^5.0",
         "symfony/form": "^5.0",
         "symfony/framework-bundle": "^5.0",
         "symfony/http-foundation": "^5.0",
@@ -30,7 +31,7 @@
     },
     "require-dev": {
         "doctrine/doctrine-bundle": "^2.0",
-        "phpunit/phpunit": "^8.5",
+        "phpunit/phpunit": "^9.5",
         "richcongress/static-analysis": "^0.1",
         "richcongress/test-suite": "^0.1",
         "roave/security-advisories": "dev-latest"

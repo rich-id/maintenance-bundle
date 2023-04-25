@@ -33,6 +33,7 @@
         <service id="RichId\MaintenanceBundle\Infrastructure\FormType\MaintenanceFormType" />
         <service id="RichId\MaintenanceBundle\Infrastructure\Rule\HasAccessToAdministration" />
         <service id="RichId\MaintenanceBundle\Infrastructure\TwigExtension\MaintenanceExtension" />
+        <service id="RichId\MaintenanceBundle\Infrastructure\Voter\MaintenanceAdministrationVoter" />
 
         <service id="RichId\MaintenanceBundle\UserInterface\Controller\MaintenanceAdminRoute" />
     </services>

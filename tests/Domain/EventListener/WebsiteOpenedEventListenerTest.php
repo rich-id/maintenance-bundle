@@ -26,8 +26,7 @@ final class WebsiteOpenedEventListenerTest extends TestCase
 
     public function testListener(): void
     {
-        $user = $this->getReference(DummyUser::class, DummyUserFixtures::USER);
-        $this->authenticateUser($user);
+        $this->authenticate(DummyUser::class, DummyUserFixtures::USER);
 
         $event = new WebsiteOpenedEvent();
 

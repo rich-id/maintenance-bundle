@@ -42,8 +42,7 @@ final class MaintenanceAdminRouteTest extends ControllerTestCase
 
     public function testRouteBadRole(): void
     {
-        $user = $this->getReference(DummyUser::class, DummyUserFixtures::USER);
-        $this->authenticateUser($user);
+        $this->authenticate(DummyUser::class, DummyUserFixtures::USER);
 
         $response = $this->getClient()->get('/administration/maintenance');
         $this->assertSame(Response::HTTP_FORBIDDEN, $response->getStatusCode());
@@ -51,8 +50,7 @@ final class MaintenanceAdminRouteTest extends ControllerTestCase
 
     public function testRouteAsAdmin(): void
     {
-        $user = $this->getReference(DummyUser::class, DummyUserFixtures::USER_ADMIN);
-        $this->authenticateUser($user);
+        $this->authenticate(DummyUser::class, DummyUserFixtures::USER_ADMIN);
 
         $response = $this->getClient()->get('/administration/maintenance');
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
@@ -66,8 +64,7 @@ final class MaintenanceAdminRouteTest extends ControllerTestCase
 
     public function testRouteAsAdminAndNotAuthorizedIp(): void
     {
-        $user = $this->getReference(DummyUser::class, DummyUserFixtures::USER_ADMIN);
-        $this->authenticateUser($user);
+        $this->authenticate(DummyUser::class, DummyUserFixtures::USER_ADMIN);
 
         $this->getClient()->getBrowser()->setServerParameter('REMOTE_ADDR', '12.12.12.12');
         $response = $this->getClient()->get('/administration/maintenance');
@@ -83,8 +80,7 @@ final class MaintenanceAdminRouteTest extends ControllerTestCase
 
     public function testRouteBadRolePost(): void
     {
-        $user = $this->getReference(DummyUser::class, DummyUserFixtures::USER);
-        $this->authenticateUser($user);
+        $this->authenticate(DummyUser::class, DummyUserFixtures::USER);
 
         $response = $this->getClient()->post(
             '/administration/maintenance',
@@ -93,7 +89,12 @@ final class MaintenanceAdminRouteTest extends ControllerTestCase
                 'maintenance_form' => [
                         'isClosed' => '1',
                     ],
-            ]
+            ],
+            [],
+            [],
+            null,
+            true,
+            false
         );
 
         $this->assertSame(Response::HTTP_FORBIDDEN, $response->getStatusCode());
@@ -103,8 +104,7 @@ final class MaintenanceAdminRouteTest extends ControllerTestCase
     {
         $this->assertFalse(($this->isWebsiteClosed)());
 
-        $user = $this->getReference(DummyUser::class, DummyUserFixtures::USER_ADMIN);
-        $this->authenticateUser($user);
+        $this->authenticate(DummyUser::class, DummyUserFixtures::USER_ADMIN);
 
         $response = $this->getClient()->post(
             '/administration/maintenance',
@@ -115,7 +115,12 @@ final class MaintenanceAdminRouteTest extends ControllerTestCase
                     'save'     => '',
                     '_token'   => $this->getCsrfToken(MaintenanceFormType::class),
                 ],
-            ]
+            ],
+            [],
+            [],
+            null,
+            true,
+            false
         );
 
         $this->assertSame(Response::HTTP_FOUND, $response->getStatusCode());
@@ -139,8 +144,7 @@ final class MaintenanceAdminRouteTest extends ControllerTestCase
         $this->maintenanceManager->lock();
         $this->assertTrue(($this->isWebsiteClosed)());
 
-        $user = $this->getReference(DummyUser::class, DummyUserFixtures::USER_ADMIN);
-        $this->authenticateUser($user);
+        $this->authenticate(DummyUser::class, DummyUserFixtures::USER_ADMIN);
 
         $response = $this->getClient()->post(
             '/administration/maintenance',
@@ -151,7 +155,12 @@ final class MaintenanceAdminRouteTest extends ControllerTestCase
                     'save'     => '',
                     '_token'   => $this->getCsrfToken(MaintenanceFormType::class),
                 ],
-            ]
+            ],
+            [],
+            [],
+            null,
+            true,
+            false
         );
 
         $this->assertSame(Response::HTTP_FOUND, $response->getStatusCode());
@@ -167,8 +176,7 @@ final class MaintenanceAdminRouteTest extends ControllerTestCase
         $this->maintenanceManager->lock();
         $this->assertTrue(($this->isWebsiteClosed)());
 
-        $user = $this->getReference(DummyUser::class, DummyUserFixtures::USER_ADMIN);
-        $this->authenticateUser($user);
+        $this->authenticate(DummyUser::class, DummyUserFixtures::USER_ADMIN);
 
         $response = $this->getClient()->post(
             '/administration/maintenance',
@@ -178,7 +186,12 @@ final class MaintenanceAdminRouteTest extends ControllerTestCase
                     'save'   => '',
                     '_token' => $this->getCsrfToken(MaintenanceFormType::class),
                 ],
-            ]
+            ],
+            [],
+            [],
+            null,
+            true,
+            false
         );
 
         $this->assertSame(Response::HTTP_FOUND, $response->getStatusCode());
@@ -201,8 +214,7 @@ final class MaintenanceAdminRouteTest extends ControllerTestCase
     {
         $this->assertFalse(($this->isWebsiteClosed)());
 
-        $user = $this->getReference(DummyUser::class, DummyUserFixtures::USER_ADMIN);
-        $this->authenticateUser($user);
+        $this->authenticate(DummyUser::class, DummyUserFixtures::USER_ADMIN);
 
         $response = $this->getClient()->post(
             '/administration/maintenance',
@@ -212,7 +224,12 @@ final class MaintenanceAdminRouteTest extends ControllerTestCase
                     'save'   => '',
                     '_token' => $this->getCsrfToken(MaintenanceFormType::class),
                 ],
-            ]
+            ],
+            [],
+            [],
+            null,
+            true,
+            false
         );
 
         $this->assertSame(Response::HTTP_FOUND, $response->getStatusCode());
