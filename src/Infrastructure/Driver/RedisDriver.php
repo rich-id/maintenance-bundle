@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace RichId\MaintenanceBundle\Infrastructure\Driver;
 
 use Lexik\Bundle\MaintenanceBundle\Drivers\AbstractDriver;
@@ -10,10 +12,10 @@ class RedisDriver extends AbstractDriver implements DriverTtlInterface
 {
     use RedisTrait;
 
-    const VALUE_TO_STORE = "maintenance";
+    const VALUE_TO_STORE = 'maintenance';
 
     /** @param array<string, mixed> $options */
-    public function __construct(array $options = array())
+    public function __construct(array $options = [])
     {
         parent::__construct($options);
 
@@ -25,7 +27,7 @@ class RedisDriver extends AbstractDriver implements DriverTtlInterface
             throw new \InvalidArgumentException('$options[\'redis_dsn\'] must be defined if Driver Redis configuration is used');
         }
 
-        if (isset($options['ttl']) && !is_int($options['ttl'])) {
+        if (isset($options['ttl']) && !\is_int($options['ttl'])) {
             throw new \InvalidArgumentException('$options[\'ttl\'] should be an integer if Driver Redis configuration is used');
         }
 
@@ -55,14 +57,14 @@ class RedisDriver extends AbstractDriver implements DriverTtlInterface
     {
         $key = $resultTest ? 'lexik_maintenance.success_lock_redis' : 'lexik_maintenance.not_success_lock';
 
-        return $this->translator->trans($key, array(), 'maintenance');
+        return $this->translator->trans($key, [], 'maintenance');
     }
 
     public function getMessageUnlock($resultTest)
     {
         $key = $resultTest ? 'lexik_maintenance.success_unlock' : 'lexik_maintenance.not_success_unlock';
 
-        return $this->translator->trans($key, array(), 'maintenance');
+        return $this->translator->trans($key, [], 'maintenance');
     }
 
     public function setTtl($value): void
