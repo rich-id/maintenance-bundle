@@ -12,11 +12,11 @@ use RichId\MaintenanceBundle\Domain\UseCase\IsAnAuthorizedIp;
 use RichId\MaintenanceBundle\Domain\UseCase\IsWebsiteClosed;
 use RichId\MaintenanceBundle\Domain\UseCase\OpenWebsite;
 use RichId\MaintenanceBundle\Infrastructure\FormType\MaintenanceFormType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class MaintenanceAdminRoute extends AbstractController
 {
@@ -49,10 +49,9 @@ class MaintenanceAdminRoute extends AbstractController
         $this->isWebsiteClosed = $isWebsiteClosed;
     }
 
-    /** @IsGranted("EDIT_ADMINISTRATION_MAINTENANCE") */
-    public function __invoke(): Response
+    #[IsGranted('EDIT_ADMINISTRATION_MAINTENANCE')]
+    public function __invoke(Request $request): Response
     {
-        $request = $this->requestStack->getCurrentRequest() ?? new Request();
         $isWebsiteClosed = ($this->isWebsiteClosed)();
 
         $maintenanceModel = new MaintenanceModel();
@@ -71,7 +70,7 @@ class MaintenanceAdminRoute extends AbstractController
                 } else {
                     ($this->openWebsite)();
                 }
-            } catch (WebsiteAlreadyClosedException | WebsiteAlreadyOpenedException $e) {
+            } catch (WebsiteAlreadyClosedException|WebsiteAlreadyOpenedException $e) {
                 // Skip the error
             }
 

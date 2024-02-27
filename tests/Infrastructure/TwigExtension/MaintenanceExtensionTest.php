@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace RichId\MaintenanceBundle\Tests\Infrastructure\TwigExtension;
 
-use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
+use RichCongress\TestFramework\TestConfiguration\Attribute\TestConfig;
 use RichCongress\TestSuite\TestCase\TestCase;
 use RichId\MaintenanceBundle\Infrastructure\Adapter\MaintenanceManager;
 use RichId\MaintenanceBundle\Infrastructure\TwigExtension\MaintenanceExtension;
@@ -16,8 +16,8 @@ use Symfony\Component\HttpFoundation\RequestStack;
 /**
  * @covers \RichId\MaintenanceBundle\Infrastructure\Rule\HasAccessToAdministration
  * @covers \RichId\MaintenanceBundle\Infrastructure\TwigExtension\MaintenanceExtension
- * @TestConfig("fixtures")
  */
+#[TestConfig('fixtures')]
 class MaintenanceExtensionTest extends TestCase
 {
     /** @var MaintenanceExtension */

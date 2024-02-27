@@ -6,8 +6,6 @@ services:
 
     Symfony\Component\Security\Http\AccessMap: ~
 
-    Symfony\Component\Security\Core\Security: ~
-
     RichId\MaintenanceBundle\Infrastructure\TwigExtension\MaintenanceExtension: ~
 
     RichId\MaintenanceBundle\Tests\Resources\Stubs\EventDispatcherStub: ~

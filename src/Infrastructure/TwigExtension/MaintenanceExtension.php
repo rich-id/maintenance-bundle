@@ -44,7 +44,7 @@ class MaintenanceExtension extends AbstractExtension
 
     public function isCurrentIpAuthorizedToAccessToClosedWebsite(): bool
     {
-        $request = $this->requestStack->getMasterRequest();
+        $request = $this->requestStack->getMainRequest();
         $ip = $request ? $request->getClientIp() : null;
 
         return $ip !== null && ($this->isAnAuthorizedIp)($ip);

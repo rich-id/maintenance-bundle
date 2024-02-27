@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace RichId\MaintenanceBundle\Tests\Domain\UseCase;
 
-use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
+use RichCongress\TestFramework\TestConfiguration\Attribute\TestConfig;
 use RichCongress\TestSuite\TestCase\TestCase;
 use RichId\MaintenanceBundle\Domain\Event\WebsiteClosedEvent;
 use RichId\MaintenanceBundle\Domain\Exception\WebsiteAlreadyClosedException;
@@ -13,10 +13,8 @@ use RichId\MaintenanceBundle\Infrastructure\Adapter\MaintenanceManager;
 use RichId\MaintenanceBundle\Tests\Resources\Stubs\EventDispatcherStub;
 use RichId\MaintenanceBundle\Tests\Resources\Stubs\LoggerStub;
 
-/**
- * @covers \RichId\MaintenanceBundle\Domain\UseCase\CloseWebsite
- * @TestConfig("kernel")
- */
+/** @covers \RichId\MaintenanceBundle\Domain\UseCase\CloseWebsite */
+#[TestConfig('kernel')]
 final class CloseWebsiteTest extends TestCase
 {
     /** @var CloseWebsite */

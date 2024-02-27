@@ -4,17 +4,15 @@ declare(strict_types=1);
 
 namespace RichId\MaintenanceBundle\Tests\Infrastructure\Adapter;
 
-use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
+use RichCongress\TestFramework\TestConfiguration\Attribute\TestConfig;
 use RichCongress\TestSuite\TestCase\TestCase;
 use RichId\MaintenanceBundle\Domain\Event\WebsiteClosedEvent;
 use RichId\MaintenanceBundle\Domain\Event\WebsiteOpenedEvent;
 use RichId\MaintenanceBundle\Infrastructure\Adapter\EventDispatcher;
 use RichId\MaintenanceBundle\Tests\Resources\Stubs\EventDispatcherStub;
 
-/**
- * @covers \RichId\MaintenanceBundle\Infrastructure\Adapter\EventDispatcher
- * @TestConfig("kernel")
- */
+/** @covers \RichId\MaintenanceBundle\Infrastructure\Adapter\EventDispatcher */
+#[TestConfig('kernel')]
 final class EventDispatcherTest extends TestCase
 {
     /** @var EventDispatcher */

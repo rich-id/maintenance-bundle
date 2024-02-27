@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace RichId\MaintenanceBundle\Tests\Domain\UseCase;
 
-use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
+use RichCongress\TestFramework\TestConfiguration\Attribute\TestConfig;
 use RichCongress\TestSuite\TestCase\TestCase;
 use RichId\MaintenanceBundle\Domain\UseCase\IsAnAuthorizedIp;
 
-/**
- * @covers \RichId\MaintenanceBundle\Domain\UseCase\IsAnAuthorizedIp
- * @TestConfig("fixtures")
- */
+/** @covers \RichId\MaintenanceBundle\Domain\UseCase\IsAnAuthorizedIp */
+#[TestConfig('fixtures')]
 final class IsAnAuthorizedIpTest extends TestCase
 {
     /** @var IsAnAuthorizedIp */

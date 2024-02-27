@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace RichId\MaintenanceBundle\Tests\Infrastructure\Adapter;
 
-use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
+use RichCongress\TestFramework\TestConfiguration\Attribute\TestConfig;
 use RichCongress\TestSuite\TestCase\TestCase;
 use RichId\MaintenanceBundle\Infrastructure\Adapter\MaintenanceManager;
 
-/**
- * @covers \RichId\MaintenanceBundle\Infrastructure\Adapter\MaintenanceManager
- * @TestConfig("kernel")
- */
+/** @covers \RichId\MaintenanceBundle\Infrastructure\Adapter\MaintenanceManager */
+#[TestConfig('kernel')]
 final class MaintenanceManagerTest extends TestCase
 {
     /** @var MaintenanceManager */

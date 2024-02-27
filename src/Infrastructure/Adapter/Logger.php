@@ -6,7 +6,7 @@ namespace RichId\MaintenanceBundle\Infrastructure\Adapter;
 
 use Psr\Log\LoggerInterface as PsrLogger;
 use RichId\MaintenanceBundle\Domain\Port\LoggerInterface;
-use Symfony\Component\Security\Core\Security;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class Logger implements LoggerInterface
@@ -40,7 +40,7 @@ class Logger implements LoggerInterface
     private function logMaintenanceStatusChange(bool $isClosed): void
     {
         $user = $this->security->getUser();
-        $userUsername = $user !== null ? $user->getUsername() : '';
+        $userUsername = $user !== null ? $user->getUserIdentifier() : '';
         $now = new \DateTime();
 
         $translationKey = $isClosed ? 'maintenance.log.website_closed' : 'maintenance.log.website_opened';

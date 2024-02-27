@@ -15,7 +15,7 @@ final class EventDispatcherStub extends AbstractOverrideService implements Event
     /** @var array<mixed> */
     protected $events = [];
 
-    public function dispatch($event, string $eventName = null): object
+    public function dispatch($event, ?string $eventName = null): object
     {
         $this->events[] = $event;
 

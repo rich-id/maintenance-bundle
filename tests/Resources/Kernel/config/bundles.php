@@ -8,6 +8,5 @@ return [
     Symfony\Bundle\TwigBundle\TwigBundle::class                                             => ['all' => true],
     Lexik\Bundle\MaintenanceBundle\LexikMaintenanceBundle::class                            => ['test' => true],
     RichCongress\RecurrentFixturesTestBundle\RichCongressRecurrentFixturesTestBundle::class => ['test' => true],
-    Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle::class                    => ['test' => true],
     RichId\MaintenanceBundle\Infrastructure\RichIdMaintenanceBundle::class                  => ['test' => true],
 ];

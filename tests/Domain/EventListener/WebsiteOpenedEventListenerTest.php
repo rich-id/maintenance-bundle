@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace RichId\MaintenanceBundle\Tests\Domain\EventListener;
 
-use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
+use RichCongress\TestFramework\TestConfiguration\Attribute\TestConfig;
 use RichCongress\TestSuite\TestCase\TestCase;
 use RichId\MaintenanceBundle\Domain\Event\WebsiteOpenedEvent;
 use RichId\MaintenanceBundle\Domain\EventListener\WebsiteOpenedEventListener;
@@ -12,10 +12,8 @@ use RichId\MaintenanceBundle\Tests\Resources\Entity\DummyUser;
 use RichId\MaintenanceBundle\Tests\Resources\Fixtures\DummyUserFixtures;
 use RichId\MaintenanceBundle\Tests\Resources\Stubs\LoggerStub;
 
-/**
- * @covers \RichId\MaintenanceBundle\Domain\EventListener\WebsiteOpenedEventListener
- * @TestConfig("fixtures")
- */
+/** @covers \RichId\MaintenanceBundle\Domain\EventListener\WebsiteOpenedEventListener */
+#[TestConfig('fixtures')]
 final class WebsiteOpenedEventListenerTest extends TestCase
 {
     /** @var WebsiteOpenedEventListener */

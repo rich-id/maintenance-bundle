@@ -4,16 +4,14 @@ declare(strict_types=1);
 
 namespace RichId\MaintenanceBundle\Tests\Infrastructure\FormType;
 
-use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
+use RichCongress\TestFramework\TestConfiguration\Attribute\TestConfig;
 use RichId\MaintenanceBundle\Domain\Model\MaintenanceModel;
 use RichId\MaintenanceBundle\Infrastructure\FormType\MaintenanceFormType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\Test\TypeTestCase;
 
-/**
- * @covers \RichId\MaintenanceBundle\Infrastructure\FormType\MaintenanceFormType
- * @TestConfig("kernel")
- */
+/** @covers \RichId\MaintenanceBundle\Infrastructure\FormType\MaintenanceFormType */
+#[TestConfig('kernel')]
 final class MaintenanceFormTypeTest extends TypeTestCase
 {
     /** @var FormFactoryInterface */
