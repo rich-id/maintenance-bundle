@@ -1,6 +1,6 @@
 {
     "name": "rich-id/maintenance-bundle",
-    "description": "A maintenance bundle for Symfony 5.0",
+    "description": "A maintenance bundle for Symfony 6.0",
     "type": "symfony-bundle",
     "license": "MIT",
     "minimum-stability": "dev",
@@ -21,20 +21,20 @@
         "php": "^8.1",
         "prolix/maintenance-bundle": "^2.1",
         "psr/log": "^2.0 || ^3.0",
-        "richcongress/bundle-toolbox": "v2.x-dev",
-        "symfony/form": "^5.0 || ^6.0 || ^7.0",
-        "symfony/framework-bundle": "^5.0 || ^6.0 || ^7.0",
-        "symfony/http-foundation": "^5.0 || ^6.0 || ^7.0",
-        "symfony/routing": "^5.0 || ^6.0 || ^7.0",
-        "symfony/security-bundle": "^5.0 || ^6.0 || ^7.0",
-        "symfony/translation": "^5.0 || ^6.0 || ^7.0",
-        "symfony/twig-bundle": "^5.0 || ^6.0 || ^7.0"
+        "richcongress/bundle-toolbox": "^2.0",
+        "symfony/form": "^6.0 || ^7.0",
+        "symfony/framework-bundle": "^6.0 || ^7.0",
+        "symfony/http-foundation": "^6.0 || ^7.0",
+        "symfony/routing": "^6.0 || ^7.0",
+        "symfony/security-bundle": "^6.0 || ^7.0",
+        "symfony/translation": "^6.0 || ^7.0",
+        "symfony/twig-bundle": "^6.0 || ^7.0"
     },
     "require-dev": {
         "doctrine/doctrine-bundle": "^2.0",
         "phpunit/phpunit": "^9.5",
-        "richcongress/static-analysis": "v0.2.x-dev",
-        "richcongress/test-suite": "v0.2.x-dev",
+        "richcongress/static-analysis": "^0.2",
+        "richcongress/test-suite": "^0.2",
         "roave/security-advisories": "dev-latest"
     },
     "autoload": {

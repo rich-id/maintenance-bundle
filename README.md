@@ -20,7 +20,7 @@
 
 # 1. Installation
 
-This version of the bundle requires Symfony 4.4+ and PHP 7.3+. Moreover, remember to properly configure the [lexik/maintenance-bundle](https://packagist.org/packages/lexik/maintenance-bundle).
+This version of the bundle requires Symfony 6.0+ and PHP 8.1+. Moreover, remember to properly configure the [lexik/maintenance-bundle](https://packagist.org/packages/lexik/maintenance-bundle).
 
 ### 1.1 Composer
 
